@@ -19,13 +19,11 @@ Congratulation you can now use the package in your projects.
 import SwiftyCharts
 ```
 
-### Demo
-
-You can find a demo of SwiftyCharts here TODO. The Demo app showcases the possibilies and customization options of the package. Find some inspiration and learn how to use it.
-
 ## Examples
 
 SwiftyCharts provides animations and interactions with the charts.
+
+![Alt text](/../Resources/Images/LineChartRainbow.png?raw=true "Optional Title")
 
 ### Line charts
 
@@ -45,4 +43,4 @@ struct ContentView: View {
 }
 ```
 
-Check out the initilizers or the demo app to experiment with custom styles.
+Check out the initilizers to experiment with custom styles.
