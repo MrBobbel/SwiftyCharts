@@ -23,8 +23,6 @@ import SwiftyCharts
 
 SwiftyCharts provides animations and interactions with the charts.
 
-![Alt text](/../Resources/Images/LineChartRainbow.png?raw=true "Optional Title")
-
 ### Line charts
 
 In your view you can create a chart like this:
@@ -44,3 +42,7 @@ struct ContentView: View {
 ```
 
 Check out the initilizers to experiment with custom styles.
+
+
+![Alt text](/../Resources/Images/Images/LineChartRainbow.png?raw=true "Optional Title")
+![Alt text](/../Resources/Images/Images/LineChartBlue.png?raw=true "Optional Title")
