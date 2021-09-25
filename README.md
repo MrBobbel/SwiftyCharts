@@ -42,6 +42,7 @@ struct ContentView: View {
 ```
 
 Check out the initilizers to experiment with custom styles.
+To selected the individual data points on the graph, make a horizontal DragGesture.
 
 
 ![Alt text](/../Resources/Images/Images/LineChartRainbow.png?raw=true)
