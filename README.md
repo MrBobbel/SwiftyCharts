@@ -44,5 +44,5 @@ struct ContentView: View {
 Check out the initilizers to experiment with custom styles.
 
 
-![Alt text](/../Resources/Images/Images/LineChartRainbow.png?raw=true "Optional Title")
-![Alt text](/../Resources/Images/Images/LineChartBlue.png?raw=true "Optional Title")
+![Alt text](/../Resources/Images/Images/LineChartRainbow.png?raw=true)
+![Alt text](/../Resources/Images/Images/LineChartBlue.png?raw=true)
