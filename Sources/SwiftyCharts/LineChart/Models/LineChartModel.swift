@@ -27,6 +27,44 @@ public class LineChartModel: ObservableObject, Identifiable {
         return Int(min(height / minimumHeightOfYAxisDescriptorText, maximumAmountOfYDescriptors).rounded())
     }
     
+    var xAxisDescriptionValues: [String]? {
+        if currentDataset.chartData.dataPoints.isEmpty {
+            return nil
+        }
+        let datePoints = currentDataset.chartData.onlyXValues
+        return datePoints.map { $0.description }
+    }
+    
+    var yAxisDescriptionValues: [Double]? {
+        //Case for 0 data points
+        guard let min = currentDataset.legendStyle.minimumYValue,
+              let max = currentDataset.legendStyle.maximumYValue else {
+            return nil
+        }
+        //Case for 1 data point
+        if currentDataset.chartData.dataPoints.count < 2 {
+            return [min, min == max ? max + 1 : max]
+        }
+        
+        let valueRange = max - min
+        
+        //Check if the array only consits of elements with the same value
+        if valueRange == 0 {
+            return [min, min == max ? max + 1 : max]
+        }
+        
+        let stepSize = valueRange / Double(yValueDescriptorsAmount)
+        
+        var yDescriptionValues = [Double]()
+        yDescriptionValues.append(min)
+        for _ in 0..<yValueDescriptorsAmount {
+            
+            yDescriptionValues.append((yDescriptionValues.last ?? min) + stepSize)
+        }
+        
+        return yDescriptionValues
+    }
+    
     /// - Parameters:
     ///     - datasets: All datasets you want to show in this view.
     ///     - currentSelectedDatasetIndex: The initial dataset you want to show. By default / fallback the first is shown.
@@ -54,7 +92,11 @@ public class LineChartModel: ObservableObject, Identifiable {
         setFrame(for: totalSize)
     }
     
-    func setFrame(for size: CGSize) {
+    func setFrame(for size: CGSize, yAxisDescriptionWidth: CGFloat? = nil) {
+        if let yAxisDescriptionWidth = yAxisDescriptionWidth,
+           currentDataset.legendStyle.useDynamicYAxisDescriptionWidth {
+            currentDataset.legendStyle.yAxisDescriptionWidth = yAxisDescriptionWidth
+        }
         totalSize = size
         let x = currentDataset.legendStyle.showYAxis
             ? currentDataset.legendStyle.yAxisDescriptionWidth + currentDataset.legendStyle.pathFrameEdgeInsets.leading
