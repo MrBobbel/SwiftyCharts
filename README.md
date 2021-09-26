@@ -42,7 +42,12 @@ struct ContentView: View {
 ```
 
 Check out the initilizers to experiment with custom styles.
-To selected the individual data points on the graph, make a horizontal DragGesture.
+
+To selected the individual data points on the graph, make a horizontal DragGesture. The indicator which displays the current selected data point is comletely customizable. You can define your own view with your own animations. The LineChart init provides a ViewBuilder for this particular case. The closure provides you with an indicator information tuple.
+
+If you just want to highlight the current selected datapoint in a seperate view below or above the chart, you can do so with the currentSelectedDataPoint publisher on the LineChartModel.
+
+For the individual look, you can create a custom style and legend for each dataset in your LineChartModel.
 
 
 ![Alt text](/../Resources/Images/Images/LineChartRainbow.png?raw=true)
